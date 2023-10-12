@@ -7,7 +7,10 @@ except Exception:
     sys.exit()
 
 from django.conf import settings
-import uuid
+from django.contrib.auth.models import AbstractUser
+
+class User(AbstractUser):
+    pass
 
 # Instructor model
 class Instructor(models.Model):
@@ -113,4 +116,3 @@ class Choice(models.Model):
 class Submission(models.Model):
     enrollment = models.ForeignKey(Enrollment, on_delete=models.CASCADE)
     choices = models.ManyToManyField(Choice)
-    
